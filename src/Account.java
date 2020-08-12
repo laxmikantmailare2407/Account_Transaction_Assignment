@@ -1,2 +1,3 @@
-public class Account {
+public class Account extends Customer {
+
 }
