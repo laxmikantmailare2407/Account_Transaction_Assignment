@@ -1,14 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Customer {
-    int CID;
-    String Name;
-    int age;
-    long Mob_No;
-    String Address;
+public class Customer extends XYZBank {
+    private List<Customer> customerList;
+    public int noc;
 
-// add tiString method to print object
+
+    // add tiString method to print object
     @Override
     public String toString() {
         return "Customer{" +
@@ -19,7 +18,7 @@ public class Customer {
                 ", Address='" + Address + '\'' +
                 '}';
     }
-//    empty comstructor
+//    empty constructor
     public Customer(){
     }
 //    constructor to call variables
@@ -32,13 +31,12 @@ public class Customer {
     }
 // method to add customer and store it in arraylist
     public void addCustomer() {
-        ArrayList <Customer> crs =new ArrayList<Customer>();
+        customerList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("How many customer do you want to add");
-        int noc=sc.nextInt();
+        noc=sc.nextInt();
         for(int i=0;i<noc;i++) {
-            System.out.println(i+". enter CID");
-            CID=sc.nextInt();
+            CID=i;
             System.out.println(i+". enter name");
             Name = sc.next();
             System.out.println(i+". enter age");
@@ -47,12 +45,17 @@ public class Customer {
             Mob_No = sc.nextLong();
             System.out.println(i+". enter address");
             Address = sc.next();
-            crs.add(new Customer(CID, Name, age, Mob_No, Address));
+            customerList.add(new Customer(CID, Name, age, Mob_No, Address));
         }
 //        to show customer
-        for(int i=0; i<crs.size(); i++){
+        for(int i=0; i<customerList.size(); i++){
             System.out.println("Customer: "+i +" details");
-            System.out.println(crs.get(i));
+            System.out.println(customerList.get(i));
         }
+        System.out.println(noc+" customers were added.");
+    }
+//    method to getCustomers
+    public List<Customer> getCustomer(){
+        return customerList;
     }
 }
